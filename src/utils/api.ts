@@ -50,9 +50,9 @@ export const signInWithJWT = async () => {
   let token = localStorage.getItem('token'); // FINISH-ME: check for token
   // Note: if token is not found, it can be 'undefined'(string)
 
-  if (token) {
-    const result = await sendRequest('banking-info', 'GET', undefined, token);
-    return result || null;
-  }
-  else return 'undefined'
+  if (!token || token === "undefined" || token === "null") return;
+
+  const result = await sendRequest('banking-info', 'GET', undefined, token);
+  return result || null;
+
 }
